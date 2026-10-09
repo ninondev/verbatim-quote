@@ -1,0 +1,577 @@
+[
+  {
+    "name": "a cut-off number never matches",
+    "quote": "at least 18",
+    "source": "at least 180 days",
+    "expect": "miss"
+  },
+  {
+    "name": "a number continues past a decimal point",
+    "quote": "at least 18",
+    "source": "at least 18.5 years",
+    "expect": "miss"
+  },
+  {
+    "name": "a number continues past a thousands separator",
+    "quote": "prize of $1,000",
+    "source": "prize of $1,000,000",
+    "expect": "miss"
+  },
+  {
+    "name": "a word continues before the quote",
+    "quote": "eligible to enter",
+    "source": "Minors are ineligible to enter",
+    "expect": "miss"
+  },
+  {
+    "name": "a fraction is not its digits",
+    "quote": "1",
+    "source": "½",
+    "expect": "miss"
+  },
+  {
+    "name": "a superscript is not a digit",
+    "quote": "x2 + 1",
+    "source": "x² + 1",
+    "expect": "miss"
+  },
+  {
+    "name": "a circled number is not a digit",
+    "quote": "step 1",
+    "source": "step ①",
+    "expect": "miss"
+  },
+  {
+    "name": "every valid ellipsis placement is found",
+    "quote": "AAAAA ... BBBBB ... CCCCC",
+    "source": "AAAAA BBBBB xxxxxxx BBBBB xxxxxxxx CCCCC",
+    "options": {"allowEllipsis":true,"minPart":5,"maxGap":20},
+    "expect": "match",
+    "start": 0,
+    "end": 40
+  },
+  {
+    "name": "a cut-off number matches with boundary none",
+    "quote": "at least 18",
+    "source": "at least 180 days",
+    "options": {"boundary":"none"},
+    "expect": "match",
+    "start": 0,
+    "end": 11
+  },
+  {
+    "name": "a decimal continuation matches with boundary none",
+    "quote": "at least 18",
+    "source": "at least 18.5 years",
+    "options": {"boundary":"none"},
+    "expect": "match",
+    "start": 0,
+    "end": 11
+  },
+  {
+    "name": "a thousands continuation matches with boundary none",
+    "quote": "prize of $1,000",
+    "source": "prize of $1,000,000",
+    "options": {"boundary":"none"},
+    "expect": "match",
+    "start": 0,
+    "end": 15
+  },
+  {
+    "name": "a word continuation matches with boundary none",
+    "quote": "eligible to enter",
+    "source": "Minors are ineligible to enter",
+    "options": {"boundary":"none"},
+    "expect": "match",
+    "start": 13,
+    "end": 30
+  },
+  {
+    "name": "a number before further words matches",
+    "quote": "at least 18",
+    "source": "at least 18 years",
+    "expect": "match",
+    "start": 0,
+    "end": 11
+  },
+  {
+    "name": "a number before a comma and more text matches",
+    "quote": "at least 18",
+    "source": "at least 18, and more",
+    "expect": "match",
+    "start": 0,
+    "end": 11
+  },
+  {
+    "name": "a full stop at the end of a sentence joins nothing",
+    "quote": "at least 18",
+    "source": "at least 18. Then it ends.",
+    "expect": "match",
+    "start": 0,
+    "end": 11
+  },
+  {
+    "name": "a number inside unspaced script matches",
+    "quote": "18",
+    "source": "年满18周岁",
+    "expect": "match"
+  },
+  {
+    "name": "a number that ends a hyphen range does not match alone",
+    "quote": "18",
+    "source": "ages 10-18",
+    "expect": "miss"
+  },
+  {
+    "name": "a number with a leading sign does not match alone",
+    "quote": "18",
+    "source": "-18 degrees",
+    "expect": "miss"
+  },
+  {
+    "name": "a number before a percent sign does not match alone",
+    "quote": "18",
+    "source": "18% applies",
+    "expect": "miss"
+  },
+  {
+    "name": "a number inside a clock time does not match alone",
+    "quote": "18",
+    "source": "18:30",
+    "expect": "miss"
+  },
+  {
+    "name": "a number before an ordinal suffix does not match alone",
+    "quote": "18",
+    "source": "the 18th of May",
+    "expect": "miss"
+  },
+  {
+    "name": "a percent sign belongs to the number it follows",
+    "quote": "18%",
+    "source": "a rate of 18% applies",
+    "expect": "match"
+  },
+  {
+    "name": "a hyphen range quoted whole matches",
+    "quote": "10-18",
+    "source": "ages 10-18",
+    "expect": "match"
+  },
+  {
+    "name": "a word inside a contraction does not match",
+    "quote": "can",
+    "source": "You can’t enter",
+    "expect": "miss"
+  },
+  {
+    "name": "a word inside a hyphen compound does not match",
+    "quote": "refundable",
+    "source": "non-refundable deposit",
+    "expect": "miss"
+  },
+  {
+    "name": "a word before a domain full stop does not match",
+    "quote": "example",
+    "source": "example.com",
+    "expect": "miss"
+  },
+  {
+    "name": "a chinese phrase before a colon matches",
+    "quote": "参赛对象",
+    "source": "参赛对象：在校学生",
+    "expect": "match"
+  },
+  {
+    "name": "a chinese word inside a word matches",
+    "quote": "学生",
+    "source": "在校学生",
+    "expect": "match"
+  },
+  {
+    "name": "a word before a closing full stop matches",
+    "quote": "eligible",
+    "source": "are eligible.",
+    "expect": "match"
+  },
+  {
+    "name": "a word inside straight quotes matches",
+    "quote": "best",
+    "source": "the 'best' one",
+    "expect": "match"
+  },
+  {
+    "name": "a later occurrence is found when the first is rejected",
+    "quote": "18",
+    "source": "Version 18a is old. See page 18 for details.",
+    "expect": "match",
+    "start": 29,
+    "end": 31
+  },
+  {
+    "name": "a word inside a product name does not match",
+    "quote": "Phone",
+    "source": "iPhone18",
+    "expect": "miss"
+  },
+  {
+    "name": "a thousands group quoted whole matches",
+    "quote": "1,000",
+    "source": "costs 1,000 yen",
+    "expect": "match"
+  },
+  {
+    "name": "a clock time quoted whole matches",
+    "quote": "10:30",
+    "source": "at 10:30 sharp",
+    "expect": "match"
+  },
+  {
+    "name": "a fraction with a slash quoted whole matches",
+    "quote": "1/2",
+    "source": "a 1/2 chance",
+    "expect": "match"
+  },
+  {
+    "name": "a number after a fraction slash does not match alone",
+    "quote": "2",
+    "source": "1/2 chance",
+    "expect": "miss"
+  },
+  {
+    "name": "a number before a fraction slash does not match alone",
+    "quote": "1",
+    "source": "1/2 chance",
+    "expect": "miss"
+  },
+  {
+    "name": "an en dash range quoted whole matches",
+    "quote": "18–25",
+    "source": "ages 18–25 apply",
+    "expect": "match"
+  },
+  {
+    "name": "a hyphen in the quote matches an en dash in the source",
+    "quote": "18-25",
+    "source": "ages 18–25 apply",
+    "expect": "match"
+  },
+  {
+    "name": "a number that ends an en dash range does not match alone",
+    "quote": "25",
+    "source": "ages 18–25",
+    "expect": "miss"
+  },
+  {
+    "name": "a contraction quoted whole matches",
+    "quote": "can't",
+    "source": "You can’t enter",
+    "expect": "match"
+  },
+  {
+    "name": "a decimal number quoted whole matches",
+    "quote": "1.5",
+    "source": "round 1.5 starts",
+    "expect": "match"
+  },
+  {
+    "name": "a bare number before a decimal point does not match alone",
+    "quote": "18",
+    "source": "18.5 years",
+    "expect": "miss"
+  },
+  {
+    "name": "initials cut at a full stop do not match",
+    "quote": "U.S",
+    "source": "the U.S.A rules",
+    "expect": "miss"
+  },
+  {
+    "name": "initials quoted whole match",
+    "quote": "U.S.A",
+    "source": "the U.S.A rules",
+    "expect": "match"
+  },
+  {
+    "name": "a hyphen compound quoted whole matches",
+    "quote": "non-refundable deposit",
+    "source": "a non-refundable deposit",
+    "expect": "match"
+  },
+  {
+    "name": "a word after a contraction apostrophe does not match",
+    "quote": "t enter",
+    "source": "You can’t enter",
+    "expect": "miss"
+  },
+  {
+    "name": "a minus sign folds to a hyphen",
+    "quote": "-18",
+    "source": "−18 degrees",
+    "expect": "match",
+    "start": 0,
+    "end": 3
+  },
+  {
+    "name": "a signed number quoted whole matches",
+    "quote": "-18",
+    "source": "-18 degrees",
+    "expect": "match",
+    "start": 0,
+    "end": 3
+  },
+  {
+    "name": "boundary rules survive whitespace ignore",
+    "quote": "18",
+    "source": "ages 10-18 apply",
+    "options": {"whitespace":"ignore"},
+    "expect": "miss"
+  },
+  {
+    "name": "curly and straight double quotes are equal",
+    "quote": "\"legal residents\"",
+    "source": "“legal residents”",
+    "expect": "match"
+  },
+  {
+    "name": "dash variants are equal",
+    "quote": "18 - 25",
+    "source": "18 — 25",
+    "expect": "match"
+  },
+  {
+    "name": "runs of whitespace and no-break spaces are equal",
+    "quote": "up to four people",
+    "source": "up to four   people",
+    "expect": "match"
+  },
+  {
+    "name": "a full-width colon is the ascii colon",
+    "quote": "参赛对象:",
+    "source": "参赛对象：",
+    "expect": "match"
+  },
+  {
+    "name": "a ligature folds to its letters",
+    "quote": "final",
+    "source": "ﬁnal",
+    "expect": "match",
+    "start": 0,
+    "end": 4
+  },
+  {
+    "name": "the ellipsis character folds to three dots",
+    "quote": "...",
+    "source": "…",
+    "expect": "match",
+    "start": 0,
+    "end": 1
+  },
+  {
+    "name": "decomposed and composed accents are equal",
+    "quote": "café",
+    "source": "café",
+    "expect": "match",
+    "start": 0,
+    "end": 5
+  },
+  {
+    "name": "soft hyphen, zero-width space and BOM are removed",
+    "quote": "eligible",
+    "source": "eli­gi​ble﻿",
+    "expect": "match",
+    "start": 0,
+    "end": 10
+  },
+  {
+    "name": "single curly quotes are the ascii apostrophe",
+    "quote": "It's a 'test'",
+    "source": "It’s a ‘test’",
+    "expect": "match",
+    "start": 0,
+    "end": 13
+  },
+  {
+    "name": "an ellipsis character in the quote matches three dots in the source",
+    "quote": "Wait… or go.",
+    "source": "Wait... or go.",
+    "expect": "match",
+    "start": 0,
+    "end": 14
+  },
+  {
+    "name": "a superscript folds only under compatibility",
+    "quote": "x2 + 1",
+    "source": "x² + 1",
+    "options": {"compatibility":true},
+    "expect": "match"
+  },
+  {
+    "name": "a circled number folds only under compatibility",
+    "quote": "step 1",
+    "source": "step ①",
+    "options": {"compatibility":true},
+    "expect": "match"
+  },
+  {
+    "name": "a roman numeral character folds only under compatibility",
+    "quote": "Chapter IV",
+    "source": "Chapter Ⅳ",
+    "expect": "miss"
+  },
+  {
+    "name": "a roman numeral character matches under compatibility",
+    "quote": "Chapter IV",
+    "source": "Chapter Ⅳ",
+    "options": {"compatibility":true},
+    "expect": "match"
+  },
+  {
+    "name": "a trademark sign folds only under compatibility",
+    "quote": "AcmeTM",
+    "source": "Acme™",
+    "expect": "miss"
+  },
+  {
+    "name": "a trademark sign matches under compatibility",
+    "quote": "AcmeTM",
+    "source": "Acme™",
+    "options": {"compatibility":true},
+    "expect": "match"
+  },
+  {
+    "name": "a fraction never matches by its first digit, even under compatibility",
+    "quote": "1",
+    "source": "½",
+    "options": {"compatibility":true},
+    "expect": "miss"
+  },
+  {
+    "name": "a fraction quoted whole matches under compatibility",
+    "quote": "1⁄2",
+    "source": "½",
+    "options": {"compatibility":true},
+    "expect": "match",
+    "start": 0,
+    "end": 1
+  },
+  {
+    "name": "full-width digits fold to ascii digits",
+    "quote": "年满18周岁",
+    "source": "年满１８周岁",
+    "expect": "match",
+    "start": 0,
+    "end": 6
+  },
+  {
+    "name": "half-width katakana fold to katakana",
+    "quote": "カタカナ",
+    "source": "ｶﾀｶﾅ",
+    "expect": "match",
+    "start": 0,
+    "end": 4
+  },
+  {
+    "name": "three separate family emoji do not match their joined sequence",
+    "quote": "👨👩👧",
+    "source": "👨‍👩‍👧",
+    "expect": "miss"
+  },
+  {
+    "name": "a joined family emoji matches itself",
+    "quote": "👨‍👩‍👧",
+    "source": "👨‍👩‍👧",
+    "expect": "match",
+    "start": 0,
+    "end": 8
+  },
+  {
+    "name": "a zero-width non-joiner is kept",
+    "quote": "illegal",
+    "source": "il‌legal",
+    "expect": "miss"
+  },
+  {
+    "name": "a match may not start inside a ligature",
+    "quote": "inal",
+    "source": "ﬁnal",
+    "expect": "miss"
+  },
+  {
+    "name": "two dots do not match the ellipsis character",
+    "quote": "..",
+    "source": "…",
+    "expect": "miss"
+  },
+  {
+    "name": "one person emoji does not match inside a joined family emoji",
+    "quote": "👨",
+    "source": "👨‍👩‍👧",
+    "expect": "miss"
+  },
+  {
+    "name": "a match may not start inside a base with an uncomposable mark",
+    "quote": "̸t",
+    "source": "ca̸t",
+    "expect": "miss"
+  },
+  {
+    "name": "a base with an uncomposable mark matches as a whole",
+    "quote": "a̸t",
+    "source": "a̸t is rare",
+    "expect": "match",
+    "start": 0,
+    "end": 3
+  },
+  {
+    "name": "an ellipsis gap over the limit stays a miss",
+    "quote": "AAAAA ... CCCCC",
+    "source": "AAAAA xxxxxxxxxxxxxxxxxxxxxxxxxxxxx CCCCC",
+    "options": {"allowEllipsis":true,"minPart":5,"maxGap":20},
+    "expect": "miss"
+  },
+  {
+    "name": "an ellipsis gap within the limit matches whole words",
+    "quote": "AAAAA ... CCCCC",
+    "source": "AAAAA xxxxxxxxxxxxxx CCCCC",
+    "options": {"allowEllipsis":true,"minPart":5,"maxGap":20},
+    "expect": "match",
+    "start": 0,
+    "end": 26
+  },
+  {
+    "name": "an inner ellipsis piece cannot start inside a word",
+    "quote": "Alpha ... eligible ... Omega",
+    "source": "Alpha ineligible Omega",
+    "options": {"allowEllipsis":true,"minPart":5},
+    "expect": "miss"
+  },
+  {
+    "name": "an inner ellipsis piece cannot start inside an alphanumeric word",
+    "quote": "Alpha ... 18 is great",
+    "source": "Alpha iPhone18 is great",
+    "options": {"allowEllipsis":true,"minPart":5},
+    "expect": "miss"
+  },
+  {
+    "name": "an inner ellipsis piece cannot end inside a word",
+    "quote": "Alpha ine ... Omega",
+    "source": "Alpha ineligible Omega",
+    "options": {"allowEllipsis":true,"minPart":3},
+    "expect": "miss"
+  },
+  {
+    "name": "pieces too short around an ellipsis stay a miss",
+    "quote": "The ... a",
+    "source": "The beginning and the end",
+    "options": {"allowEllipsis":true},
+    "expect": "miss"
+  },
+  {
+    "name": "an ellipsis may not cut a number",
+    "quote": "at least 18 ... old",
+    "source": "at least 180 years old",
+    "options": {"allowEllipsis":true,"minPart":3},
+    "expect": "miss"
+  }
+]

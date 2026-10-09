@@ -1,0 +1,45 @@
+{
+  "name": "verbatim-quote",
+  "version": "1.0.0",
+  "description": "Find quotes by exact comparison after explicit Unicode folding and boundary checks, with offsets into the original source. Zero runtime dependencies.",
+  "type": "module",
+  "license": "MPL-2.0",
+  "homepage": "https://ninondev.github.io/verbatim-quote/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ninondev/verbatim-quote.git"
+  },
+  "bugs": "https://github.com/ninondev/verbatim-quote/issues",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "default": "./index.js"
+    }
+  },
+  "types": "./index.d.ts",
+  "bin": {
+    "verbatim-quote": "./bin/verbatim-quote.js"
+  },
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "bin/",
+    "CHANGELOG.md"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "keywords": [
+    "quote",
+    "citation",
+    "grounding",
+    "hallucination",
+    "evidence",
+    "llm",
+    "sentence-splitter",
+    "mcp"
+  ],
+  "scripts": {
+    "test": "node --test --test-concurrency=1 test/*.test.js"
+  }
+}

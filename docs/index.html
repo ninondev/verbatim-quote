@@ -1,0 +1,123 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MPL-2.0 -->
+<!-- Copyright (c) 2026 Ninon -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>verbatim-quote playground</title>
+<style>
+:root {
+  --paper: #FAF8F3; --ink: #1A1A18; --muted: #6F6B62; --rule: #E6E2D8;
+  --mark: #FFE566; --bad: #B4281A; --field: #FFFFFF; --focus: #1A1A18;
+  --serif: "Iowan Old Style", Palatino, Georgia, "Songti SC", "Noto Serif CJK SC", serif;
+  --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --paper: #141413; --ink: #ECE9E2; --muted: #A09B90; --rule: #2B2A27;
+          --mark: rgba(255, 221, 87, 0.26); --bad: #FF7A66; --field: #1B1B19; --focus: #ECE9E2; }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+.page { max-width: 960px; margin: 0 auto; padding: 24px; }
+.masthead { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+.brand { font-family: var(--mono); font-size: 20px; font-weight: 600; }
+.tagline { color: var(--muted); margin-top: 2px; }
+.links { display: flex; gap: 16px; }
+.links a { color: var(--ink); }
+.inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
+.inputs label { display: flex; flex-direction: column; gap: 8px; }
+textarea {
+  background: var(--field);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 14px;
+  padding: 12px;
+  resize: vertical;
+  width: 100%;
+}
+.options { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-top: 16px; }
+.summary { margin: 16px 0 8px; }
+.quotes { display: flex; flex-direction: column; gap: 4px; list-style: none; margin: 0; padding: 0; }
+.quotes button, .quotes li {
+  font-family: var(--mono);
+  font-size: 14px;
+  text-align: left;
+  width: 100%;
+}
+.quotes button {
+  align-items: baseline;
+  background: transparent;
+  border: 0;
+  border-radius: 8px;
+  color: var(--ink);
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: 24px 1fr auto;
+  padding: 8px 4px;
+}
+.quotes li { color: var(--ink); display: grid; grid-template-columns: 24px 1fr auto; padding: 8px 4px; }
+.sign { display: inline-block; }
+.sign.no { color: var(--bad); }
+.offsets { color: var(--muted); }
+.status { color: var(--bad); white-space: nowrap; }
+.closest { color: var(--muted); font-size: 13px; grid-column: 2 / -1; }
+.diff { outline: 1.5px solid var(--bad); outline-offset: 1px; border-radius: 2px; }
+.written { margin-top: 24px; }
+.written h2 { font-size: 16px; font-weight: 600; margin: 0 0 8px; }
+.passage { font-family: var(--serif); font-size: 18px; line-height: 1.7; white-space: pre-wrap; }
+.passage mark { background: var(--mark); border-radius: 3px; color: inherit; padding: 1px 0; }
+.passage mark.outline { outline: 2px solid var(--focus); outline-offset: 2px; }
+a:focus-visible, input:focus-visible, textarea:focus-visible, button:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+@media (max-width: 720px) {
+  .inputs { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<main class="page">
+  <header class="masthead">
+    <div>
+      <div class="brand">verbatim-quote</div>
+      <div class="tagline">Exact comparison with explicit folding rules.</div>
+    </div>
+    <nav class="links">
+      <a href="https://github.com/ninondev/verbatim-quote">GitHub</a>
+      <a href="https://www.npmjs.com/package/verbatim-quote">npm</a>
+    </nav>
+  </header>
+
+  <div class="inputs">
+    <label>Source<textarea id="source" rows="12" spellcheck="false"></textarea></label>
+    <label>Quotes<textarea id="quotes" rows="12" spellcheck="false"></textarea></label>
+  </div>
+
+  <div class="options">
+    <label><input type="checkbox" id="ignore-case"> Ignore case</label>
+    <label><input type="checkbox" id="ignore-whitespace"> Ignore all whitespace</label>
+    <label><input type="checkbox" id="allow-ellipsis"> Allow … as a gap</label>
+    <label><input type="checkbox" id="compatibility"> Compatibility folding</label>
+  </div>
+
+  <p class="summary" aria-live="polite" id="summary"></p>
+
+  <ol class="quotes" id="rows"></ol>
+
+  <section class="written">
+    <h2>Source as written</h2>
+    <div class="passage" id="written"></div>
+  </section>
+</main>
+<script type="module" src="playground.js"></script>
+</body>
+</html>
