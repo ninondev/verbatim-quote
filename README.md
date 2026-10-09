@@ -1,6 +1,6 @@
 # verbatim-quote
 
-**Did the model really quote that?** verbatim-quote checks a quote against its source, character for character, and gives you offsets into the original text.
+verbatim-quote checks that a quote really appears in its source, character for character, and gives you offsets into the original text.
 Scored by plain similarity, a quote that says 21 where the source says 18 still gets 0.96. verbatim-quote rejects it.
 Only listed typography differences, such as curly quotes and dash variants, are folded before the exact comparison. It does not check what a quote means.
 
@@ -29,8 +29,8 @@ explainMiss("at least 21 years old", page);
 //   differences: [{ kind: 'changed', quote: '21', source: '18', start: 26, end: 28 }] }
 ```
 
-Zero dependencies. One ES module. Unicode text with grapheme-aware offsets. Requires `Intl.Segmenter`.
-Use Node 22 or later.
+It is one ES module with no dependencies, and its offsets are grapheme-aware.
+It needs `Intl.Segmenter`, so use Node 22 or later.
 [Try it in the playground](https://ninondev.github.io/verbatim-quote/).
 
 ## Why not `includes()` or a similarity score?
@@ -148,8 +148,8 @@ sentenceAt(page, report.results[0].match.start).text;
 | `compatibility` | `false` | Fold every character with Unicode NFKC, as earlier development versions did. Latin ligatures fold in either mode. |
 | `boundary` | `"word"` | Reject the specified word/number joins. `"none"` skips these boundary checks. |
 
-Checking many quotes against one long source? `createMatcher(source, options)` prepares it once and
-gives you `find(quote)` and `verify(quote)`.
+To check many quotes against one long source, call `createMatcher(source, options)`. It prepares the
+source once and gives you `find(quote)` and `verify(quote)`.
 
 ### Explaining a miss
 
@@ -197,7 +197,7 @@ npx github:ninondev/verbatim-quote rules.txt 'must be at least 18 years old'
 Flags: `--ignore-case`, `--ellipsis`, `--ignore-whitespace`, `--json`, `--explain`. Use `-` to read the
 source from standard input, and `--` before a quote that starts with `--`. With `--quotes` you check many
 quotes in one run; with `--explain` a close diagnosis adds a suggested passage and its first difference.
-The exit code is 0 when the quote is found, 1 when it is not and 2 on bad usage, so it works in scripts.
+The exit code is 0 when the quote is found, 1 when it is not and 2 on bad usage, so you can use it in scripts.
 
 ## Where it came from
 
