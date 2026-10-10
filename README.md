@@ -232,3 +232,5 @@ Pull requests are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for testing an
 [MPL-2.0](LICENSE)
 
 Copyright (c) 2026 Ninon
+
+If this was useful to you, a star helps other people find it.
