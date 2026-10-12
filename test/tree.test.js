@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MPL-2.0
+// SPDX-License-Identifier: MIT
 // Copyright (c) 2026 Ninon
 // The public tree must carry no private marker. The walk skips .git, node_modules and the
 // paths the maintainer's export leaves out (read from the ignore file at runtime), and the

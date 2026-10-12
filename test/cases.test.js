@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MPL-2.0
+// SPDX-License-Identifier: MIT
 // Copyright (c) 2026 Ninon
 // Runs every case in spec/cases.json: the shared, plain-data list of what must
 // match and what must not under the folding, cluster, boundary and ellipsis rules.

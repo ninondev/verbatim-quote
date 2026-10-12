@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MPL-2.0
+// SPDX-License-Identifier: MIT
 // Copyright (c) 2026 Ninon
 // The similarity used by the README's comparison table and the hero images:
 // 1 - levenshtein / length of the longer string, counted in code points.

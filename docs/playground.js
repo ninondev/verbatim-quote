@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MPL-2.0
+// SPDX-License-Identifier: MIT
 // Copyright (c) 2026 Ninon
 // verbatim-quote playground. The helpers above the DOM layer are pure and exported, so
 // node --test can run them; everything below only touches the document. No build step,

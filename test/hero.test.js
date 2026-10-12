@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MPL-2.0
+// SPDX-License-Identifier: MIT
 // Copyright (c) 2026 Ninon
 // The two hero images carry a <metadata id="facts"> block with the strings and the values
 // they show. This test recomputes every value with the library and the similarity function

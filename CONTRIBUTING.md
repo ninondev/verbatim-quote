@@ -12,7 +12,4 @@ Wall-clock checks are optional: run `VERBATIM_QUOTE_TIMING=1 npm test` to includ
 The playground is a static page in `docs/`. Keep `docs/verbatim-quote.js` byte-identical to
 `index.js` when changing the library.
 
-Before your first pull request can be merged, read [CLA.md](CLA.md) and post this comment
-on the pull request:
-
-> I have read the CLA and I agree to it.
+Contributions are accepted under the MIT License. See [LICENSE](LICENSE).

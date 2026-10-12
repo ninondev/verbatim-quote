@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// SPDX-License-Identifier: MPL-2.0
+// SPDX-License-Identifier: MIT
 // Copyright (c) 2026 Ninon
 // verbatim-quote <source-file|-> <quote> [flags]
 // verbatim-quote <source-file|-> --quotes <quotes.json|-> [flags]

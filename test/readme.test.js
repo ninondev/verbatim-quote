@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MPL-2.0
+// SPDX-License-Identifier: MIT
 // Copyright (c) 2026 Ninon
 // Executes the README's JavaScript examples as written, so the documented outputs
 // cannot drift from the library. The only rewrite is the import specifier, which

@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MPL-2.0
+// SPDX-License-Identifier: MIT
 // Copyright (c) 2026 Ninon
 // Runs bin/verbatim-quote.js the way the README documents it, including the
 // exit codes scripts rely on: 0 found, 1 not found, 2 bad usage.

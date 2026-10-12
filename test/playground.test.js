@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MPL-2.0
+// SPDX-License-Identifier: MIT
 // Copyright (c) 2026 Ninon
 // The playground's pure helpers, the default example, the byte-identical library copy, and
 // the no-addresses / no-innerHTML rules. These checks cover code and pure helpers.

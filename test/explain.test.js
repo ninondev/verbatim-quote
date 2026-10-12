@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MPL-2.0
+// SPDX-License-Identifier: MIT
 // Copyright (c) 2026 Ninon
 // explainMiss says what is different when a quote is missing. It is a diagnostic;
 // findQuote, verifyQuote and checkQuotes are unchanged by it.

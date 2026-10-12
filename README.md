@@ -224,12 +224,11 @@ product limit are the same in either mode. Timing results depend on the machine 
 
 ## Contributing
 
-Pull requests are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for testing and the required
-[CLA](CLA.md) comment. The maintainer reads issues.
+Pull requests are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for testing. The maintainer reads issues.
 
 ## License
 
-[MPL-2.0](LICENSE)
+[MIT](LICENSE)
 
 Copyright (c) 2026 Ninon
 

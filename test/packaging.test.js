@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MPL-2.0
+// SPDX-License-Identifier: MIT
 // Copyright (c) 2026 Ninon
 // Guards the packaging contract: complete package.json at 1.0.0 with
 // zero runtime dependencies, the exact file list npm would publish, and a
